@@ -12,7 +12,7 @@ jobs:
         matrix: 
             os: [macos-latest, ubuntu-laatest, windows-latest]
             java: ['8', '11', '17']
-    name: SO ${{ matrix.so }} Java ${{ matrix.java }} sample
+    name: SO ${{ matrix.os }} Java ${{ matrix.java }} sample
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK ${{ matrix.java }} 
