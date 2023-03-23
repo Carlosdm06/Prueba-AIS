@@ -1,23 +1,23 @@
 name: Continuous integration example
 
 on: 
-  workflow_dispatch:
+  push:
 
 jobs:
 
   test:
-    runs-on: $ {{matrix.os}}
+    runs-on: ${{ matrix.os }}
     strategy:
         fail-fast: false
         matrix: 
             os: [macos-latest, ubuntu-laatest, windows-latest]
             java: ['8', '11', '17']
-    name: Java ${{matrix.java}} sample
+    name: Java ${{ matrix.java }} sample
     steps:
       - uses: actions/checkout@v3
-      - name: Set up JDK ${{matrix.java}} 
+      - name: Set up JDK ${{ matrix.java }} 
         uses: actions/setup-java@v3
         with:
           distribution: 'adopt'
-          java-version: ${{matrix.java}}
+          java-version: ${{ matrix.java }}
       - run: mvn test
